@@ -865,24 +865,23 @@ async function updateEURUSD() {
 
   try {
     const response = await fetch(
-      "https://www.live-rates.com/rates"
+      "https://api.exchangerate.dev/v1/latest/USD?symbols=EUR"
     );
 
     if (!response.ok) {
-      throw new Error("Feed unavailable");
+      throw new Error("Rate feed unavailable");
     }
 
     const data = await response.json();
-    const quote = data.find(item =>
-      item.currency === "EUR/USD"
-    );
+    const rate = Number(data.rates?.EUR);
 
-    if (!quote || !Number.isFinite(Number(quote.rate))) {
-      throw new Error("EUR/USD quote not found");
+    if (!Number.isFinite(rate) || rate <= 0) {
+      throw new Error("Invalid rate");
     }
 
-    price.textContent = Number(quote.rate).toFixed(5);
-    updated.textContent = new Date().toLocaleString();
+    price.textContent = (1 / rate).toFixed(5);
+    updated.textContent =
+      "Feed checked: " + new Date().toLocaleString();
   } catch (error) {
     price.textContent = "Price temporarily unavailable";
     updated.textContent = "Please try again later";
