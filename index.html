@@ -1,0 +1,736 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b0b">
+  <meta name="description" content="L&M Forex - Learn forex trading, build your strategy, and develop disciplined trading habits.">
+  <title>L&M Forex | Trade. Learn. Grow.</title>
+
+  <style>
+    :root {
+      --bg: #080b0b;
+      --panel: #111716;
+      --gold: #d4af37;
+      --white: #f7f7f4;
+      --muted: #a8b0ad;
+      --green: #16c784;
+      --border: #29302d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8, 11, 11, 0.96);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      line-height: 1.1;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .logo small {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 5px;
+      margin-top: 5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .menu-button {
+      display: none;
+      color: var(--white);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--gold);
+      color: #10100a;
+      padding: 12px 22px;
+      border-radius: 5px;
+      font-weight: 700;
+      border: 1px solid var(--gold);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: #f0cf61;
+      transform: translateY(-2px);
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: #646b66;
+    }
+
+    .hero {
+      padding: 100px 0 85px;
+      background:
+        radial-gradient(ellipse at 85% 30%, #342b123b, transparent 40%),
+        linear-gradient(145deg, #080b0b, #101714);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.12;
+      margin: 18px 0;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 27px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .chart-card {
+      background: linear-gradient(160deg, #18211d, #0d1110);
+      border: 1px solid #354039;
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 20px 60px #0006;
+    }
+
+    .chart-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+
+    .chart-top span:last-child {
+      color: var(--green);
+    }
+
+    .chart {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .chart-label {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    section {
+      padding: 80px 0;
+      scroll-margin-top: 75px;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 40px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.2;
+      margin: 10px 0 15px;
+    }
+
+    .section-heading p,
+    .muted {
+      color: var(--muted);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 27px;
+      border-radius: 10px;
+    }
+
+    .feature-icon {
+      font-size: 29px;
+      margin-bottom: 12px;
+    }
+
+    .feature h3 {
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .about {
+      background: #0d1210;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about p {
+      color: var(--muted);
+      margin: 15px 0;
+    }
+
+    .principles {
+      display: grid;
+      gap: 13px;
+      margin-top: 22px;
+    }
+
+    .principle {
+      border-left: 3px solid var(--gold);
+      padding: 8px 15px;
+      background: #171d19;
+    }
+
+    .instruments {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .instrument {
+      text-align: center;
+      padding: 23px 10px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+    }
+
+    .instrument strong {
+      display: block;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+
+    .instrument span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .cta {
+      background: linear-gradient(120deg, #201c0e, #111714);
+      border-top: 1px solid #4c411e;
+      border-bottom: 1px solid #4c411e;
+      text-align: center;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 24px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 40px;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin: 12px 0;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 13px;
+      color: var(--white);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+    }
+
+    input:focus, textarea:focus {
+      outline: 1px solid var(--gold);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: var(--gold);
+    }
+
+    .risk {
+      padding: 20px 0;
+      color: #aab1ad;
+      font-size: 12px;
+      background: #0b0e0d;
+    }
+
+    @media (max-width: 760px) {
+      .menu-button {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        padding: 22px 5%;
+        background: #0c100f;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links .button {
+        text-align: center;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .hero-grid, .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .instruments {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a href="#home" class="logo" aria-label="L and M Forex home">
+        <span>L&M</span>
+        <small>FOREX</small>
+      </a>
+
+      <button class="menu-button" id="menuButton"
+        aria-expanded="false" aria-controls="navLinks">
+        Menu ☰
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#markets">Markets</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="button">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Welcome to L&M Forex</div>
+          <h1>Trade Smarter.<br><span>Build Your Future.</span></h1>
+          <p>
+            Learn the fundamentals of forex trading, develop a strategy,
+            and build disciplined habits with L&M Forex. Your journey
+            starts with knowledge, practice, and responsible risk management.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#education">Start Learning →</a>
+            <a class="button button-outline" href="#about">Discover L&M</a>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-top">
+            <strong>MARKET WATCH</strong>
+            <span>Illustrative chart</span>
+          </div>
+
+          <svg class="chart" viewBox="0 0 360 220"
+            role="img" aria-label="Illustration of forex candlesticks">
+            <g stroke="#303b35" stroke-width="1">
+              <path d="M10 30 H350 M10 70 H350 M10 110 H350 M10 150 H350 M10 190 H350"/>
+              <path d="M50 10 V200 M110 10 V200 M170 10 V200 M230 10 V200 M290 10 V200"/>
+            </g>
+            <polyline points="12,174 48,157 75,166 105,123 137,136 163,95 195,111 222,74 251,86 282,45 318,57 348,22"
+              fill="none" stroke="#d4af37" stroke-width="2"
+              stroke-dasharray="4 4" opacity=".85"/>
+            <g stroke-width="2">
+              <path d="M30 160 V194 M24 169 H36 V185 H24 Z" stroke="#16c784" fill="#16c784"/>
+              <path d="M60 140 V178 M54 151 H66 V168 H54 Z" stroke="#16c784" fill="#16c784"/>
+              <path d="M90 131 V165 M84 138 H96 V155 H84 Z" stroke="#f04452" fill="#f04452"/>
+              <path d="M120 106 V152 M114 115 H126 V137 H114 Z" stroke="#16c784" fill="#16c784"/>
+              <path d="M150 92 V139 M144 103 H156 V124 H144 Z" stroke="#16c784" fill="#16c784"/>
+              <path d="M180 78 V126 M174 91 H186 V109 H174 Z" stroke="#f04452" fill="#f04452"/>
+              <path d="M210 61 V111 M204 73 H216 V92 H204 Z" stroke="#16c784" fill="#16c784"/>
+              <path d="M240 50 V93 M234 58 H246 V79 H234 Z" stroke="#16c784" fill="#16c784"/>
+              <path d="M270 31 V79 M264 43 H276 V62 H264 Z" stroke="#16c784" fill="#16c784"/>
+              <path d="M300 24 V65 M294 32 H306 V51 H294 Z" stroke="#f04452" fill="#f04452"/>
+              <path d="M330 12 V49 M324 18 H336 V36 H324 Z" stroke="#16c784" fill="#16c784"/>
+            </g>
+          </svg>
+
+          <div class="chart-label">
+            Example visualization only. Not live prices or a trading signal.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">What We Stand For</div>
+          <h2>Build Your Trading Knowledge</h2>
+          <p>
+            A strong foundation starts with education, patience, and
+            a clear understanding of the risks involved.
+          </p>
+        </div>
+
+        <div class="features">
+          <article class="feature">
+            <div class="feature-icon">📘</div>
+            <h3>Forex Education</h3>
+            <p>
+              Learn currency pairs, pips, spreads, leverage, chart reading,
+              and the basics of the foreign exchange market.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">📈</div>
+            <h3>Trading Strategies</h3>
+            <p>
+              Explore technical analysis, trading plans, and practice
+              strategies before risking real money.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">🛡️</div>
+            <h3>Risk Management</h3>
+            <p>
+              Understand position sizing, stop-loss orders, leverage,
+              and why protecting your capital matters.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div>
+          <div class="eyebrow">About Us</div>
+          <h2>More Than Just Trading.</h2>
+          <p>
+            L&M Forex is a trading-focused brand built around learning,
+            disciplined decision-making, and responsible participation
+            in financial markets.
+          </p>
+          <p>
+            Our goal is to help people understand the markets and make
+            informed decisions instead of chasing unrealistic promises.
+          </p>
+          <a href="#contact" class="button">Contact L&M Forex</a>
+        </div>
+
+        <div class="principles">
+          <div class="principle">
+            <strong>01. Learn First</strong>
+            <p class="muted">Understand the market before trading.</p>
+          </div>
+          <div class="principle">
+            <strong>02. Plan Every Trade</strong>
+            <p class="muted">Use a strategy rather than emotions.</p>
+          </div>
+          <div class="principle">
+            <strong>03. Manage Your Risk</strong>
+            <p class="muted">Never risk money you cannot afford to lose.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="markets">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Explore The Markets</div>
+          <h2>Understand Different Assets</h2>
+          <p>
+            Learn how different financial instruments work and the risks
+            associated with each.
+          </p>
+        </div>
+
+        <div class="instruments">
+          <div class="instrument">
+            <strong>EUR/USD</strong>
+            <span>Currency pairs</span>
+          </div>
+          <div class="instrument">
+            <strong>GBP/USD</strong>
+            <span>Currency pairs</span>
+          </div>
+          <div class="instrument">
+            <strong>XAU/USD</strong>
+            <span>Gold markets</span>
+          </div>
+          <div class="instrument">
+            <strong>Indices</strong>
+            <span>Stock indices</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="eyebrow">Your Journey Starts Here</div>
+        <h2>Knowledge Before Profit.</h2>
+        <p>
+          Take your first step toward understanding forex trading.
+          Learn at your own pace and practice before committing real capital.
+        </p>
+        <a href="#contact" class="button">Get In Touch →</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Get In Touch</div>
+          <h2>Contact L&M Forex</h2>
+          <p>
+            Have a question about our educational content or services?
+            Send us a message.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Let's Talk</h3>
+            <p>
+              We welcome questions about forex education, trading
+              fundamentals, and risk management.
+            </p>
+            <p><strong>Brand:</strong> L&M Forex</p>
+            <p><strong>Motto:</strong> Trade. Learn. Grow.</p>
+            <p class="muted">
+              Our official email and contact links will be added
+              once they are provided.
+            </p>
+          </div>
+
+          <form id="contactForm">
+            <input type="text" id="name" placeholder="Your name"
+              aria-label="Your name" required>
+            <input type="email" id="email" placeholder="Your email address"
+              aria-label="Your email address" required>
+            <textarea id="message" placeholder="Your message"
+              aria-label="Your message" required></textarea>
+            <button type="submit" class="button">Prepare Message</button>
+            <p class="form-note" id="formNote">
+              This demo form does not send or store messages. It will
+              prepare an email draft in your email app if supported.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="risk">
+    <div class="container">
+      <strong>Risk warning:</strong> Forex and leveraged trading involve
+      significant risk and may not be suitable for everyone. You can lose
+      some or all of your invested capital. Educational content on this
+      website is not personalized financial advice. No profits are guaranteed.
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="logo"><span>L&M</span><small>FOREX</small></div>
+      <p>Trade • Learn • Grow</p>
+      <p>© <span id="year"></span> L&M Forex. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    menuButton.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    document.getElementById("contactForm").addEventListener("submit",
+      function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        const subject = encodeURIComponent("Message for L&M Forex");
+        const body = encodeURIComponent(
+          "Name: " + name + "\nEmail: " + email +
+          "\n\nMessage:\n" + message
+        );
+
+        document.getElementById("formNote").textContent =
+          "Your email app may open with a prepared draft. No message has been sent yet.";
+
+        window.location.href =
+          "mailto:?subject=" + subject + "&body=" + body;
+      });
+  </script>
+</body>
+</html>
